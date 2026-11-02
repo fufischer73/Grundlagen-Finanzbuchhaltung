@@ -1,0 +1,49 @@
+# Kursbeschreibung – Grundlagen Finanzbuchhaltung
+# Aufbau und alle Felder: referenzen/schema.md im Lernpfad-Baukasten
+titel: Grundlagen Finanzbuchhaltung
+kurzname: grundlagen-finanzbuchhaltung
+ueberschrift: Grundlagen Finanzbuchhaltung – Schritt für Schritt
+untertitel: Du übst, nach Belegen zu buchen, Erfolge zu ermitteln und die Konten abzuschließen.
+badges: [2 Stufen · ca. 5 Std., Übungslernpfad, ohne Umsatzsteuer]
+fusszeile: BBZ Rendsburg-Eckernförde · Übungsmaterial Rechnungswesen
+logo_zeichen: "€"
+einleitung: |
+  :::notiz 👉 Bevor du startest
+  1. Du kennst die Inhalte schon aus dem Unterricht. Dieser Lernpfad ist zum **Üben**.
+  2. Halte Stift, Papier und den **Kontenplan** bereit (Extras › Kontenplan).
+  3. Rechne alle Aufgaben zuerst selbst. Klappe die Lösung erst danach auf.
+  4. Alle Fälle laufen **ohne Umsatzsteuer**.
+  :::
+
+stufen:
+  - id: buchen-nach-belegen
+    name: Buchen nach Belegen
+    icon: "🌱"
+    text: Belege prüfen, Geschäftsfälle ableiten, Buchungssätze bilden, Bestandskonten abschließen.
+    module: [b1, b2, b3, bm]
+  - id: erfolge-ermitteln
+    name: Erfolge ermitteln
+    icon: "🚀"
+    text: Aufwendungen und Erträge buchen, über GuV und SBK abschließen, Gewinn oder Verlust bestimmen.
+    module: [e1, e2, e3, e4, em]
+
+selbstcheck:
+  fragen:
+    - frage: Kannst du aus einem Beleg den Buchungssatz bilden?
+      antworten: [Noch nicht sicher, Meistens, Sicher]
+    - frage: Kannst du Bestandskonten eröffnen und abschließen?
+      antworten: [Noch nicht sicher, Meistens, Sicher]
+    - frage: Kannst du Erfolgskonten über das GuV-Konto abschließen?
+      antworten: [Noch nicht sicher, Meistens, Sicher]
+  empfehlung:
+    - {bis: 2, stufe: buchen-nach-belegen, hinweis: "Starte mit B1 und arbeite die Module der Reihe nach durch."}
+    - {bis: 4, stufe: buchen-nach-belegen, hinweis: "Du kennst vieles schon. Starte mit B2 und prüfe dich mit den Kurz-Checks."}
+    - {stufe: erfolge-ermitteln, hinweis: "Du bist fit in Stufe 1. Starte mit E1 und prüfe deinen Stand mit dem Meilenstein von Stufe 1 (BM)."}
+
+# Einstufungstest erst für den Moodle-Kurs wieder einschalten:
+# einstufung: {bestehen: 80}
+
+moodle:
+  version: 5
+  freischaltung: offen   # für den Moodle-Kurs später auf "einstufung" stellen und einstufung: oben einschalten
+  reihenfolge: nacheinander
