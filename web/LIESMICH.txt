@@ -1,4 +1,0 @@
-Web-Version Lernpfad Grundlagen Finanzbuchhaltung
-Ordner herunterladen und index.html im Browser öffnen (funktioniert ohne Internet).
-Der Stand der Schüler:innen (Häkchen, Notizen, Fortschritt) wird im Browser gespeichert.
-Dieser Ordner wird aus den Quellen (kurs.yaml, module/, seiten/) erzeugt, nicht von Hand ändern.
