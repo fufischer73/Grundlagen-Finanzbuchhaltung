@@ -1,0 +1,9 @@
+/* Erzeugt von bauen.py: Farben der Stufen und Varianten dieses Kurses. */
+:root {
+  --lv-buchen-nach-belegen: var(--lv-1); --lv-buchen-nach-belegen-soft: var(--lv-1-soft);
+  --lv-erfolge-ermitteln: var(--lv-2); --lv-erfolge-ermitteln-soft: var(--lv-2-soft);
+}
+.badge.lv-buchen-nach-belegen { background: var(--lv-buchen-nach-belegen-soft); color: var(--deep); box-shadow: inset 3px 0 0 var(--lv-buchen-nach-belegen); }
+.level-card.buchen-nach-belegen { border-top-color: var(--lv-buchen-nach-belegen); }
+.badge.lv-erfolge-ermitteln { background: var(--lv-erfolge-ermitteln-soft); color: var(--deep); box-shadow: inset 3px 0 0 var(--lv-erfolge-ermitteln); }
+.level-card.erfolge-ermitteln { border-top-color: var(--lv-erfolge-ermitteln); }
