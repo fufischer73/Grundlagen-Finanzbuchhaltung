@@ -43,6 +43,36 @@ selbstcheck:
 # Einstufungstest erst für den Moodle-Kurs wieder einschalten:
 # einstufung: {bestehen: 80}
 
+# Konten für die Auswahlfelder der interaktiven Aufgaben (Nummer: Name), identisch mit dem Kontenplan
+konten:
+  "0500": Grundstücke und Gebäude
+  "0700": Maschinen
+  "0840": Fuhrpark
+  "0850": BGA
+  "2000": Rohstoffe
+  "2400": Forderungen
+  "2800": Bank
+  "2880": Kasse
+  "3000": Eigenkapital
+  "4250": Darlehen
+  "4400": Verbindlichkeiten
+  "5000": Umsatzerlöse Fertigerzeugnisse
+  "5401": Miet- und Leasingerträge
+  "5710": Zinserträge
+  "6000": Aufwendungen Rohstoffe
+  "6160": Fremdinstandhaltung
+  "6200": Löhne
+  "6300": Gehälter
+  "6700": Mietaufwendungen
+  "6800": Büromaterial
+  "6820": Porto/Telefon
+  "6870": Werbung
+  "6900": Versicherungen
+  "7510": Zinsaufwendungen
+  "EBK": (Eröffnungsbilanzkonto)
+  "SBK": (Schlussbilanzkonto)
+  "GuV": (Gewinn- und Verlustkonto)
+
 moodle:
   version: 5
   freischaltung: offen   # für den Moodle-Kurs später auf "einstufung" stellen und einstufung: oben einschalten

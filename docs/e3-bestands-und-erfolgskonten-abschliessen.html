@@ -9,6 +9,7 @@
 <script src="assets/js/kurs.js"></script>
 <script src="assets/js/medien.js" defer></script>
 <script src="assets/js/app.js" defer></script>
+<script src="assets/js/interaktiv.js" defer></script>
 </head>
 <body data-module="e3">
 <header id="topbar"></header>
@@ -60,6 +61,11 @@
 <div class="box note"><div class="box-title">Hinweis zu den Rohstoffen</div><p>Die Aufwendungen für Rohstoffe stehen in dieser Aufgabe fertig im Konto. Die Umbuchung des Verbrauchs ist schon
 erledigt. Wie man den Verbrauch ermittelt, lernst du später.</p>
 </div><h2>2. Üben</h2>
+<div class="box task basis lp-aufg" data-kind="buchung" data-tipps="[&quot;Aufwandskonten schließt du über das GuV-Konto ab.&quot;, &quot;Der Aufwand steht im Soll des GuV-Kontos. Das Aufwandskonto wird im Haben ausgeglichen.&quot;]" data-loesung="Aufwandskonten schließt du mit „GuV an Aufwandskonto“ ab." data-soll="GuV" data-haben="6200" data-betrag="12000" data-konten="GuV, SBK, 2800, 3000, 5000, 6200, 6700"><div class="task-head"><span class="lvl basis">Buchung</span><h3>Abschluss: Löhne</h3><span class="lvl time">2 min</span></div><div class="lp-frage">Das Aufwandskonto 6200 Löhne hat einen Sollsaldo von 12.000 €. Bilde die Abschlussbuchung.</div><div class="lp-bau"></div></div>
+<div class="box task basis lp-aufg" data-kind="buchung" data-tipps="[&quot;Ertragskonten schließt du ebenfalls über das GuV-Konto ab.&quot;, &quot;Das Ertragskonto wird im Soll ausgeglichen, der Ertrag steht im Haben des GuV-Kontos.&quot;]" data-loesung="Ertragskonten schließt du mit „Ertragskonto an GuV“ ab." data-soll="5000" data-haben="GuV" data-betrag="44000" data-konten="GuV, SBK, 2800, 3000, 5000, 6200, 6700"><div class="task-head"><span class="lvl basis">Buchung</span><h3>Abschluss: Umsatzerlöse</h3><span class="lvl time">2 min</span></div><div class="lp-frage">Das Ertragskonto 5000 Umsatzerlöse hat einen Habensaldo von 44.000 €. Bilde die Abschlussbuchung.</div><div class="lp-bau"></div></div>
+<div class="box task basis lp-aufg" data-kind="buchung" data-tipps="[&quot;Erträge minus Aufwendungen ergibt den Erfolg.&quot;, &quot;Ein Gewinn erhöht das Eigenkapital. Das Eigenkapital steht im Haben.&quot;]" data-loesung="Gewinn: 44.300 € − 31.700 € = 12.600 €. Buchung: GuV an Eigenkapital." data-soll="GuV" data-haben="3000" data-betrag="12600" data-konten="GuV, SBK, 2800, 3000, 5000, 6200, 6700"><div class="task-head"><span class="lvl basis">Buchung</span><h3>Gewinn buchen</h3><span class="lvl time">3 min</span></div><div class="lp-frage">Im GuV-Konto stehen Aufwendungen von 31.700 € und Erträge von 44.300 €. Buche den Gewinn.</div><div class="lp-bau"></div></div>
+<div class="box task basis lp-aufg" data-kind="buchung" data-tipps="[&quot;Bestandskonten gehen ins SBK, nicht ins GuV-Konto.&quot;]" data-loesung="Aktivkonten schließt du mit „SBK an Aktivkonto“ ab." data-soll="SBK" data-haben="2800" data-betrag="22000" data-konten="GuV, SBK, 2800, 3000, 5000, 6200, 6700"><div class="task-head"><span class="lvl basis">Buchung</span><h3>Abschluss: Bank</h3><span class="lvl time">2 min</span></div><div class="lp-frage">Das Konto 2800 Bank hat einen Sollsaldo von 22.000 €. Bilde die Abschlussbuchung.</div><div class="lp-bau"></div></div>
+<div class="box task basis lp-aufg" data-kind="buchung" data-tipps="[&quot;Das Eigenkapital ist ein Passivkonto.&quot;]" data-loesung="Passivkonten schließt du mit „Passivkonto an SBK“ ab. Der neue Stand (14.000 € + 12.600 €) kommt ins SBK." data-soll="3000" data-haben="SBK" data-betrag="26600" data-konten="GuV, SBK, 2800, 3000, 5000, 6200, 6700"><div class="task-head"><span class="lvl basis">Buchung</span><h3>Abschluss: Eigenkapital</h3><span class="lvl time">2 min</span></div><div class="lp-frage">Das Eigenkapital steht nach dem Gewinn bei 26.600 € im Haben. Bilde die Abschlussbuchung.</div><div class="lp-bau"></div></div>
 <div class="box task basis"><div class="task-head"><span class="lvl basis">Basis</span><h3>1 · Abschlussbuchungen bilden</h3><span class="lvl time">15 min</span></div><p>Die Holzwerk Förde GmbH hat am Jahresende diese Salden:</p>
 <div class="table-wrap"><table>
 <thead>
@@ -150,7 +156,10 @@ erledigt. Wie man den Verbrauch ermittelt, lernst du später.</p>
 <li>Das Eigenkapital im SBK beträgt 26.600 €.</li>
 <li>Aktiva und Passiva im SBK sind je 60.600 €.</li>
 </ul>
-</div><details><summary>Lösung</summary><p>Abschlussbuchungen:</p>
+</div><div class="box hint lp-hinweis" data-titel="Tipp 1"><div class="lp-hint-body">Gehe nach dem Schema vor: erst die Erfolgskonten, dann das GuV-Konto, dann die Bestandskonten.</div></div>
+<div class="box hint lp-hinweis" data-titel="Tipp 2"><div class="lp-hint-body">Das GuV-Konto zeigt den Erfolg: Aufwendungen im Soll, Erträge im Haben.</div></div>
+<div class="box hint lp-hinweis" data-titel="Tipp 3"><div class="lp-hint-body">Den Saldo des GuV-Kontos buchst du auf das Eigenkapital.</div></div>
+<details><summary>Lösung</summary><p>Abschlussbuchungen:</p>
 <ul>
 <li>GuV an 6000 Aufwendungen Rohstoffe 16.000,00 €</li>
 <li>GuV an 6200 Löhne 12.000,00 €</li>
@@ -278,6 +287,7 @@ erledigt. Wie man den Verbrauch ermittelt, lernst du später.</p>
 <li>Bilde die Buchung für das Ergebnis.</li>
 <li>Berechne das Eigenkapital im SBK.</li>
 </ol>
+<div class="box hint lp-hinweis" data-titel="Tipp 1"><div class="lp-hint-body">Berechne zuerst die neuen Erträge. Vergleiche sie mit den Aufwendungen.</div></div>
 <details><summary>Lösung</summary><p>Erträge: 24.000 + 300 = 24.300 €. Aufwendungen: 31.700 €. Erfolg: 24.300 − 31.700 = −7.400 €. <strong>Verlust von 7.400 €.</strong></p>
 <p>Buchung: 3000 Eigenkapital an GuV 7.400,00 €. Eigenkapital im SBK: 14.000 − 7.400 = <strong>6.600 €</strong>.</p>
 </details></div><div class="box warn"><div class="box-title">Typischer Fehler</div><p>Gewinn und Verlust verwechseln. Gewinn: GuV an Eigenkapital. Verlust: Eigenkapital an GuV.

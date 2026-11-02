@@ -9,6 +9,7 @@
 <script src="assets/js/kurs.js"></script>
 <script src="assets/js/medien.js" defer></script>
 <script src="assets/js/app.js" defer></script>
+<script src="assets/js/interaktiv.js" defer></script>
 </head>
 <body data-module="b3">
 <header id="topbar"></header>
@@ -68,6 +69,10 @@ und Verbindlichkeiten 12.000 €. Das Eigenkapital beträgt 54.000 € (66.000 �
 <li>4400 Verbindlichkeiten an 2800 Bank 6.000,00 €</li>
 </ol>
 <h2>4. Üben</h2>
+<div class="box task basis lp-aufg" data-kind="buchung" data-tipps="[&quot;Der Fuhrpark ist ein Aktivkonto. Sein Anfangsbestand steht im Soll.&quot;]" data-loesung="Aktivkonten eröffnest du mit „Aktivkonto an EBK“." data-soll="0840" data-haben="EBK" data-betrag="30000" data-konten="EBK, SBK, 0840, 0850, 2800, 3000, 4400"><div class="task-head"><span class="lvl basis">Buchung</span><h3>Eröffnung: Fuhrpark</h3><span class="lvl time">2 min</span></div><div class="lp-frage">Der Fuhrpark hat einen Anfangsbestand von 30.000 €. Bilde die Eröffnungsbuchung.</div><div class="lp-bau"></div></div>
+<div class="box task basis lp-aufg" data-kind="buchung" data-tipps="[&quot;Verbindlichkeiten sind ein Passivkonto. Der Anfangsbestand steht im Haben.&quot;]" data-loesung="Passivkonten eröffnest du mit „EBK an Passivkonto“." data-soll="EBK" data-haben="4400" data-betrag="12000" data-konten="EBK, SBK, 0840, 0850, 2800, 3000, 4400"><div class="task-head"><span class="lvl basis">Buchung</span><h3>Eröffnung: Verbindlichkeiten</h3><span class="lvl time">2 min</span></div><div class="lp-frage">Die Verbindlichkeiten haben einen Anfangsbestand von 12.000 €. Bilde die Eröffnungsbuchung.</div><div class="lp-bau"></div></div>
+<div class="box task basis lp-aufg" data-kind="buchung" data-tipps="[&quot;Eigenkapital = Vermögen − Schulden.&quot;, &quot;Das Eigenkapital ist ein Passivkonto.&quot;]" data-loesung="Eigenkapital: 66.000 € − 12.000 € = 54.000 €. Buchung: EBK an Eigenkapital." data-soll="EBK" data-haben="3000" data-betrag="54000" data-konten="EBK, SBK, 0840, 0850, 2800, 3000, 4400"><div class="task-head"><span class="lvl basis">Buchung</span><h3>Eröffnung: Eigenkapital</h3><span class="lvl time">2 min</span></div><div class="lp-frage">Vermögen 66.000 €, Schulden 12.000 €. Bilde die Eröffnungsbuchung für das Eigenkapital.</div><div class="lp-bau"></div></div>
+<div class="box task basis lp-aufg" data-kind="buchung" data-tipps="[&quot;Aktivkonten schließt du über das SBK ab.&quot;, &quot;Der Saldo steht auf der Habenseite des Kontos.&quot;]" data-loesung="Aktivkonten schließt du mit „SBK an Aktivkonto“ ab." data-soll="SBK" data-haben="2800" data-betrag="4500" data-konten="EBK, SBK, 0840, 0850, 2800, 3000, 4400"><div class="task-head"><span class="lvl basis">Buchung</span><h3>Abschluss: Bank</h3><span class="lvl time">2 min</span></div><div class="lp-frage">Das Konto Bank hat einen Saldo von 4.500 € im Soll. Bilde die Abschlussbuchung.</div><div class="lp-bau"></div></div>
 <div class="box task basis"><div class="task-head"><span class="lvl basis">Basis</span><h3>1 · Eröffnen, buchen, abschließen</h3><span class="lvl time">15 min</span></div><p>Übernimm die Anfangsbestände des Beispiels (Fuhrpark, BGA, Bank, Kasse, Verbindlichkeiten, Eigenkapital).</p>
 <ol>
 <li>Berechne das Eigenkapital.</li>
@@ -82,7 +87,10 @@ und Verbindlichkeiten 12.000 €. Das Eigenkapital beträgt 54.000 € (66.000 �
 <li>Zu jeder Buchung steht im Gegenkonto der Buchungstext.</li>
 <li>Die Summe der Aktiva im SBK ist gleich der Summe der Passiva.</li>
 </ul>
-</div><details><summary>Lösung</summary><p>Eröffnung: 0840 Fuhrpark an EBK 30.000 €, 0850 BGA an EBK 20.000 €, 2800 Bank an EBK 15.000 €,
+</div><div class="box hint lp-hinweis" data-titel="Tipp 1"><div class="lp-hint-body">Beginne mit dem Eigenkapital: Vermögen minus Schulden.</div></div>
+<div class="box hint lp-hinweis" data-titel="Tipp 2"><div class="lp-hint-body">Trage die Anfangsbestände auf der richtigen Seite ein: Aktiva links, Passiva rechts.</div></div>
+<div class="box hint lp-hinweis" data-titel="Tipp 3"><div class="lp-hint-body">Der Saldo steht auf der kleineren Seite. Er macht beide Seiten gleich.</div></div>
+<details><summary>Lösung</summary><p>Eröffnung: 0840 Fuhrpark an EBK 30.000 €, 0850 BGA an EBK 20.000 €, 2800 Bank an EBK 15.000 €,
 2880 Kasse an EBK 1.000 €, EBK an 4400 Verbindlichkeiten 12.000 €, EBK an 3000 Eigenkapital 54.000 €.</p>
 <p>Buchungen: 0850 BGA an 2800 Bank 4.000 €. 2880 Kasse an 2800 Bank 500 €. 4400 Verbindlichkeiten an 2800 Bank 6.000 €.</p>
 <p>Beispielkonten:</p>
@@ -167,6 +175,7 @@ SBK an 2880 Kasse 1.500 €, 4400 Verbindlichkeiten an SBK 6.000 €, 3000 Eigen
 </details></div><div class="box task plus"><div class="task-head"><span class="lvl plus">Plus</span><h3>2 · Eigenkapital berechnen</h3><span class="lvl time">10 min</span></div><p>Die Dreier GmbH hat Maschinen 80.000 €, Fuhrpark 20.000 €, Bank 12.000 € und Kasse 800 €.
 Sie schuldet dem Lieferer 9.000 € und der Bank ein Darlehen von 35.000 €.
 Berechne das Eigenkapital. Wie lautet die Eröffnungsbuchung für das Eigenkapital?</p>
+<div class="box hint lp-hinweis" data-titel="Tipp 1"><div class="lp-hint-body">Rechne zuerst Vermögen und Schulden getrennt aus.</div></div>
 <details><summary>Lösung</summary><p>Vermögen: 80.000 + 20.000 + 12.000 + 800 = 112.800 €. Schulden: 9.000 + 35.000 = 44.000 €.
 Eigenkapital: 68.800 €. Buchung: EBK an 3000 Eigenkapital 68.800 €.</p>
 </details></div><div class="box warn"><div class="box-title">Typischer Fehler</div><p>Das Eigenkapital in der Eröffnung vergessen. Dann sind Soll und Haben im EBK nicht gleich.</p>

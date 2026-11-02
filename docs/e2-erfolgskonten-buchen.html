@@ -9,6 +9,7 @@
 <script src="assets/js/kurs.js"></script>
 <script src="assets/js/medien.js" defer></script>
 <script src="assets/js/app.js" defer></script>
+<script src="assets/js/interaktiv.js" defer></script>
 </head>
 <body data-module="e2">
 <header id="topbar"></header>
@@ -46,74 +47,15 @@
 <div class="box tip"><div class="box-title">💡 Tipp</div><p>Beim Erfolgskonto nimmst du das passende Gegenkonto (Bank, Kasse, Verbindlichkeiten, Forderungen) und buchst
 den Aufwand im Soll und den Ertrag im Haben.</p>
 </div><h2>2. Üben</h2>
-<div class="box task basis"><div class="task-head"><span class="lvl basis">Basis</span><h3>1 · Erfolgsfälle buchen</h3><span class="lvl time">10 min</span></div><p>Bilde die Buchungssätze mit Kontonummern. Alle Fälle ohne Umsatzsteuer.</p>
-<div class="table-wrap"><table>
-<thead>
-<tr>
-<th>Nr.</th>
-<th>Geschäftsfall</th>
-<th>Betrag</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Gehaltszahlung per Banküberweisung</td>
-<td>7.400,00 €</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Bankgutschrift für Zinsen</td>
-<td>260,00 €</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Barkauf von Büromaterial</td>
-<td>85,00 €</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Banküberweisung der Büromiete</td>
-<td>1.800,00 €</td>
-</tr>
-<tr>
-<td>5</td>
-<td>Eingangsrechnung einer Zeitschrift für eine Werbeanzeige</td>
-<td>950,00 €</td>
-</tr>
-<tr>
-<td>6</td>
-<td>Ausgangsrechnung: Verkauf von Fertigerzeugnissen auf Ziel</td>
-<td>12.500,00 €</td>
-</tr>
-<tr>
-<td>7</td>
-<td>Barkauf von Briefmarken</td>
-<td>40,00 €</td>
-</tr>
-<tr>
-<td>8</td>
-<td>Bankgutschrift: Miete für eine untervermietete Lagerhalle</td>
-<td>900,00 €</td>
-</tr>
-</tbody>
-</table></div>
-<div class="checkliste"><div class="check-title">Selbstcheck</div><ul class="check">
-<li>Bei jedem Aufwand steht das Aufwandskonto im Soll.</li>
-<li>Bei jedem Ertrag steht das Ertragskonto im Haben.</li>
-<li>Alle Buchungssätze haben Kontonummern.</li>
-</ul>
-</div><details><summary>Lösung</summary><ol>
-<li>6300 Gehälter an 2800 Bank 7.400,00 €</li>
-<li>2800 Bank an 5710 Zinserträge 260,00 €</li>
-<li>6800 Büromaterial an 2880 Kasse 85,00 €</li>
-<li>6700 Mietaufwendungen an 2800 Bank 1.800,00 €</li>
-<li>6870 Werbung an 4400 Verbindlichkeiten 950,00 €</li>
-<li>2400 Forderungen an 5000 Umsatzerlöse Fertigerzeugnisse 12.500,00 €</li>
-<li>6820 Porto/Telefon an 2880 Kasse 40,00 €</li>
-<li>2800 Bank an 5401 Miet- und Leasingerträge 900,00 €</li>
-</ol>
-</details></div><div class="box task plus"><div class="task-head"><span class="lvl plus">Plus</span><h3>2 · Erfolgswirksam oder nicht?</h3><span class="lvl time">10 min</span></div><p>Bilde den Buchungssatz und entscheide, ob der Geschäftsfall den Erfolg verändert.</p>
+<div class="box task basis lp-aufg" data-kind="buchung" data-tipps="[&quot;Gehälter sind ein Aufwand.&quot;, &quot;Aufwand nimmt zu: Soll. Die Bank nimmt ab: Haben.&quot;]" data-loesung="Gehälter (Aufwand) im Soll, Bank im Haben." data-soll="6300" data-haben="2800" data-betrag="7400" data-konten="2400, 2800, 2880, 4400, 5000, 5401, 5710, 6160, 6200, 6300, 6700, 6800, 6820, 6870, 6900, 7510"><div class="task-head"><span class="lvl basis">Buchung</span><h3>Fall 1: Gehälter</h3><span class="lvl time">2 min</span></div><div class="lp-frage">Gehaltszahlung per Banküberweisung über 7.400 €.</div><div class="lp-bau"></div></div>
+<div class="box task basis lp-aufg" data-kind="buchung" data-tipps="[&quot;Zinsen, die du bekommst, sind ein Ertrag.&quot;, &quot;Die Bank nimmt zu: Soll. Ein Ertrag nimmt im Haben zu.&quot;]" data-loesung="Bank im Soll, Zinserträge (Ertrag) im Haben." data-soll="2800" data-haben="5710" data-betrag="260" data-konten="2400, 2800, 2880, 4400, 5000, 5401, 5710, 6160, 6200, 6300, 6700, 6800, 6820, 6870, 6900, 7510"><div class="task-head"><span class="lvl basis">Buchung</span><h3>Fall 2: Zinsgutschrift</h3><span class="lvl time">2 min</span></div><div class="lp-frage">Die Bank schreibt 260 € Zinsen gut.</div><div class="lp-bau"></div></div>
+<div class="box task basis lp-aufg" data-kind="buchung" data-tipps="[&quot;Büromaterial wird verbraucht: Aufwand.&quot;]" data-loesung="Büromaterial (Aufwand) im Soll, Kasse im Haben." data-soll="6800" data-haben="2880" data-betrag="85" data-konten="2400, 2800, 2880, 4400, 5000, 5401, 5710, 6160, 6200, 6300, 6700, 6800, 6820, 6870, 6900, 7510"><div class="task-head"><span class="lvl basis">Buchung</span><h3>Fall 3: Büromaterial</h3><span class="lvl time">2 min</span></div><div class="lp-frage">Barkauf von Büromaterial über 85 €.</div><div class="lp-bau"></div></div>
+<div class="box task basis lp-aufg" data-kind="buchung" data-tipps="[&quot;Wer die Miete zahlt, hat einen Aufwand.&quot;]" data-loesung="Mietaufwendungen im Soll, Bank im Haben." data-soll="6700" data-haben="2800" data-betrag="1800" data-konten="2400, 2800, 2880, 4400, 5000, 5401, 5710, 6160, 6200, 6300, 6700, 6800, 6820, 6870, 6900, 7510"><div class="task-head"><span class="lvl basis">Buchung</span><h3>Fall 4: Büromiete</h3><span class="lvl time">2 min</span></div><div class="lp-frage">Banküberweisung der Büromiete über 1.800 €.</div><div class="lp-bau"></div></div>
+<div class="box task basis lp-aufg" data-kind="buchung" data-tipps="[&quot;Die Rechnung ist noch nicht bezahlt. Welches Konto zeigt eine offene Schuld?&quot;]" data-loesung="Werbung (Aufwand) im Soll, Verbindlichkeiten im Haben." data-soll="6870" data-haben="4400" data-betrag="950" data-konten="2400, 2800, 2880, 4400, 5000, 5401, 5710, 6160, 6200, 6300, 6700, 6800, 6820, 6870, 6900, 7510"><div class="task-head"><span class="lvl basis">Buchung</span><h3>Fall 5: Werbeanzeige</h3><span class="lvl time">2 min</span></div><div class="lp-frage">Eingangsrechnung einer Zeitschrift für eine Werbeanzeige über 950 €.</div><div class="lp-bau"></div></div>
+<div class="box task basis lp-aufg" data-kind="buchung" data-tipps="[&quot;Der Kunde zahlt später. Du hast eine Forderung.&quot;, &quot;Der Verkauf ist ein Ertrag (Umsatzerlöse).&quot;]" data-loesung="Forderungen im Soll, Umsatzerlöse im Haben." data-soll="2400" data-haben="5000" data-betrag="12500" data-konten="2400, 2800, 2880, 4400, 5000, 5401, 5710, 6160, 6200, 6300, 6700, 6800, 6820, 6870, 6900, 7510"><div class="task-head"><span class="lvl basis">Buchung</span><h3>Fall 6: Verkauf auf Ziel</h3><span class="lvl time">2 min</span></div><div class="lp-frage">Ausgangsrechnung: Verkauf von Fertigerzeugnissen auf Ziel über 12.500 €.</div><div class="lp-bau"></div></div>
+<div class="box task basis lp-aufg" data-kind="buchung" data-tipps="[&quot;Porto ist ein Aufwand. Bar bezahlt heißt: Kasse.&quot;]" data-loesung="Porto/Telefon (Aufwand) im Soll, Kasse im Haben." data-soll="6820" data-haben="2880" data-betrag="40" data-konten="2400, 2800, 2880, 4400, 5000, 5401, 5710, 6160, 6200, 6300, 6700, 6800, 6820, 6870, 6900, 7510"><div class="task-head"><span class="lvl basis">Buchung</span><h3>Fall 7: Briefmarken</h3><span class="lvl time">2 min</span></div><div class="lp-frage">Barkauf von Briefmarken über 40 €.</div><div class="lp-bau"></div></div>
+<div class="box task basis lp-aufg" data-kind="buchung" data-tipps="[&quot;Du erhältst Miete: Das ist ein Ertrag.&quot;]" data-loesung="Bank im Soll, Miet- und Leasingerträge (Ertrag) im Haben." data-soll="2800" data-haben="5401" data-betrag="900" data-konten="2400, 2800, 2880, 4400, 5000, 5401, 5710, 6160, 6200, 6300, 6700, 6800, 6820, 6870, 6900, 7510"><div class="task-head"><span class="lvl basis">Buchung</span><h3>Fall 8: Untervermietung</h3><span class="lvl time">2 min</span></div><div class="lp-frage">Bankgutschrift: Miete für eine untervermietete Lagerhalle über 900 €.</div><div class="lp-bau"></div></div>
+<div class="box task plus"><div class="task-head"><span class="lvl plus">Plus</span><h3>2 · Erfolgswirksam oder nicht?</h3><span class="lvl time">10 min</span></div><p>Bilde den Buchungssatz und entscheide, ob der Geschäftsfall den Erfolg verändert.</p>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -155,6 +97,7 @@ den Aufwand im Soll und den Ertrag im Haben.</p>
 </tr>
 </tbody>
 </table></div>
+<div class="box hint lp-hinweis" data-titel="Tipp 1"><div class="lp-hint-body">Frage dich zuerst: Ändert sich ein Erfolgskonto (Aufwand oder Ertrag)? Wenn nein, ist der Fall nicht erfolgswirksam.</div></div>
 <details><summary>Lösung</summary><p>a. 6160 Fremdinstandhaltung an 4400 Verbindlichkeiten 1.350,00 € – erfolgswirksam: <strong>ja</strong>
 b. 6900 Versicherungen an 2800 Bank 640,00 € – erfolgswirksam: <strong>ja</strong>
 c. 6200 Löhne an 2880 Kasse 3.200,00 € – erfolgswirksam: <strong>ja</strong>
