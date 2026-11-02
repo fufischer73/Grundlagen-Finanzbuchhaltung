@@ -1,0 +1,20 @@
+# Quellen mit Prüfstatus – siehe referenzen/qualitaet.md
+- id: q-ls-aufgabenmuster
+  titel: Lernsituationen 46 (Nach Belegen buchen) und 48 (Erfolge ermitteln), Aufgabenmuster
+  art: fachliteratur
+  lizenz: "Keine Übernahme von Texten, Belegen oder Zahlen. Nur das Aufgabenmuster, alle Aufgaben eigen."
+  status: verifiziert
+  geprueft_am: 2026-11-02
+  belegt: Stoffumfang (Belegbearbeitung, Kontierung, Erfolgskonten, Abschluss über GuV und SBK). Ausgeschlossen auf Wunsch der Lehrkraft - AB 48.1 bis 48.4 und 48.7 (Materialverbrauch, Handelswaren, Bestandsveränderungen).
+- id: q-kontenplan
+  titel: Kontenplan der Lehrkraft (BBZ), ergänzt um 0500 und 0700
+  art: eigene
+  status: zu_pruefen
+  geprueft_am: 2026-11-02
+  belegt: Kontonummern 0500 Grundstücke und Gebäude und 0700 Maschinen von Claude ergänzt, mit dem Schulkontenplan abgleichen. Übrige Nummern wie von der Lehrkraft vorgegeben.
+- id: q-buchungsregeln
+  titel: Buchungsregeln, Bilanzveränderungen, Abschlussbuchungen (Bilanzmethode)
+  art: fachliteratur
+  status: zu_pruefen
+  geprueft_am: 2026-11-02
+  belegt: Fachlogik aus dem Vorgänger-Lernpfad Buchungssätze und Kontenabschluss. Alle Beispielrechnungen mit einem Rechenwerkzeug nachgerechnet (Aktiva = Passiva, Gewinn/Verlust). Lehrkraft prüft die Fachaussagen.
