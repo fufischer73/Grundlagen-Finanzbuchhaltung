@@ -42,7 +42,7 @@ Du arbeitest in der Buchhaltung der **Holzwerk Förde GmbH**. Du bearbeitest die
 | 4 | Eingangsrechnung | Kauf eines Büroschranks auf Ziel. | 2.400,00 € |
 | 5 | Kontoauszug | Überweisung an einen Lieferanten. | 10.000,00 € |
 | 6 | Quittung | Barabhebung vom Bankkonto. | 1.500,00 € |
-| 7 | Ausgangsrechnung | Verkauf einer gebrauchten Maschine auf Ziel (zum Buchwert). | 7.000,00 € |
+| 7 | Ausgangsrechnung | Verkauf einer gebrauchten Maschine auf Ziel. Der Verkaufspreis ist gleich dem Buchwert (kein Gewinn, kein Verlust). | 7.000,00 € |
 | 8 | Kontoauszug | Darlehensauszahlung der Bank (Gutschrift). | 20.000,00 € |
 | 9 | Eingangsrechnung | Kauf eines Transporters auf Ziel. | 15.000,00 € |
 

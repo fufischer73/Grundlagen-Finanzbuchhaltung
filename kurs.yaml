@@ -36,13 +36,14 @@ selbstcheck:
     - frage: Kannst du Erfolgskonten über das GuV-Konto abschließen?
       antworten: [Noch nicht sicher, Meistens, Sicher]
   empfehlung:
-    - {bis: 3, stufe: buchen-nach-belegen, hinweis: "Starte mit B1 und arbeite die Module der Reihe nach durch."}
-    - {bis: 4, stufe: buchen-nach-belegen, hinweis: "Mach den Einstufungstest oder überspringe B1 und B2."}
-    - {stufe: erfolge-ermitteln, hinweis: "Du bist fit in Stufe 1. Mach den Einstufungstest und starte mit E1."}
+    - {bis: 2, stufe: buchen-nach-belegen, hinweis: "Starte mit B1 und arbeite die Module der Reihe nach durch."}
+    - {bis: 4, stufe: buchen-nach-belegen, hinweis: "Du kennst vieles schon. Starte mit B2 und prüfe dich mit den Kurz-Checks."}
+    - {stufe: erfolge-ermitteln, hinweis: "Du bist fit in Stufe 1. Starte mit E1 und prüfe deinen Stand mit dem Meilenstein von Stufe 1 (BM)."}
 
-einstufung: {bestehen: 80}
+# Einstufungstest erst für den Moodle-Kurs wieder einschalten:
+# einstufung: {bestehen: 80}
 
 moodle:
   version: 5
-  freischaltung: einstufung
+  freischaltung: offen   # für den Moodle-Kurs später auf "einstufung" stellen und einstufung: oben einschalten
   reihenfolge: nacheinander
