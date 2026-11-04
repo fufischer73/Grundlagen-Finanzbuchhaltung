@@ -57,16 +57,18 @@
 
   // ---------- Tipp- und Lösungsknöpfe (für :::buchung und :::auswahl) ----------
   function werkzeuge(box, st, loesungHtml, tipps, nachPruefen) {
+    var keine = box.dataset.keine === "1";          // Meilenstein/Prüfung: keine Lösung anzeigen
     var leiste = el("div", { "class": "lp-tools" });
     var tippBtn = tipps.length ? el("button", { type: "button", "class": "btn secondary lp-tipp" }) : null;
-    var solBtn = el("button", { type: "button", "class": "btn secondary lp-sol" }, "🔒 Lösung anzeigen");
+    var solBtn = keine ? null : el("button", { type: "button", "class": "btn secondary lp-sol" }, "🔒 Lösung anzeigen");
     var tippBox = el("div", { "class": "lp-tipps", "aria-live": "polite" });
-    var solBox = el("div", { "class": "box note lp-loesung", hidden: "hidden" });
+    var solBox = keine ? null : el("div", { "class": "box note lp-loesung", hidden: "hidden" });
     if (tippBtn) leiste.appendChild(tippBtn);
-    leiste.appendChild(solBtn);
-    box.querySelector(".lp-bau").appendChild(leiste);
-    box.querySelector(".lp-bau").appendChild(tippBox);
-    box.querySelector(".lp-bau").appendChild(solBox);
+    if (solBtn) leiste.appendChild(solBtn);
+    var bau = box.querySelector(".lp-bau");
+    if (tippBtn || solBtn) bau.appendChild(leiste);
+    bau.appendChild(tippBox);
+    if (solBox) bau.appendChild(solBox);
 
     function malTipps() {
       tippBox.innerHTML = "";
@@ -77,6 +79,7 @@
       }
     }
     function malLoesung() {
+      if (keine) return;
       var versucht = (st.versuche || 0) > 0;
       solBtn.disabled = !versucht && !st.sol;
       solBtn.title = versucht || st.sol ? "" : "Probiere die Aufgabe zuerst selbst. Dann kannst du die Lösung ansehen.";
@@ -87,7 +90,7 @@
     if (tippBtn) tippBtn.addEventListener("click", function () {
       st.tipps = (st.tipps || 0) + 1; malTipps(); save(); merke(box, box.querySelector("h3").textContent);
     });
-    solBtn.addEventListener("click", function () {
+    if (solBtn) solBtn.addEventListener("click", function () {
       if (solBtn.disabled) return;
       st.sol = !st.sol; malLoesung(); save(); merke(box, box.querySelector("h3").textContent);
     });
@@ -213,6 +216,38 @@
     if (st.wahl != null) {
       var r0 = bau.querySelector('input[name="' + id + '"][value="' + st.wahl + '"]'); if (r0) r0.checked = true;
       if (st.versuche) { markiere(st.wahl); fb.className = "lp-fb " + (st.ok ? "ok" : "bad"); fb.textContent = st.ok ? "✅ Richtig." : "❌ Noch nicht. Probiere es noch einmal oder nimm einen Tipp."; }
+    }
+    werk.neuMalen();
+  }
+
+  // ---------- :::zahl – Rechenergebnis eingeben ----------
+  function baueZahl(box, key) {
+    var st = S.ans[key] || (S.ans[key] = {});
+    var soll = zahl(box.dataset.antwort), tol = parseFloat(String(box.dataset.toleranz || "0").replace(",", ".")) || 0;
+    var einheit = box.dataset.einheit != null ? box.dataset.einheit : "€";
+    var id = key.replace(/[^\w-]/g, "-");
+    var bau = box.querySelector(".lp-bau");
+    bau.innerHTML = '<label class="lp-feld lp-betrag"><span>Ergebnis' + (einheit ? " in " + esc(einheit) : "") + '</span><input id="' + id + '-z" type="text" inputmode="decimal" autocomplete="off" placeholder="z. B. 12.500"></label>' +
+      '<div class="lp-actions"><button type="button" class="btn lp-pruefen">Prüfen</button></div><div class="lp-fb" aria-live="polite"></div>';
+    var inp = bau.querySelector("#" + id + "-z"), fb = bau.querySelector(".lp-fb");
+    function anzeige(n) { return einheit === "€" ? euro(n) : n.toLocaleString("de-DE", { maximumFractionDigits: 4 }) + (einheit ? " " + einheit : ""); }
+    var werk = werkzeuge(box, st, box.dataset.loesung || "", jsonAttr(box, "data-tipps"), {
+      loesungHtml: function () { return "Richtig ist: <strong>" + anzeige(soll) + "</strong>"; }
+    });
+    inp.addEventListener("change", function () { st.eingabe = inp.value; save(); merke(box, box.querySelector("h3").textContent); });
+    bau.querySelector(".lp-pruefen").addEventListener("click", function () {
+      var v = zahl(inp.value); st.eingabe = inp.value;
+      if (isNaN(v)) { fb.className = "lp-fb warn"; fb.textContent = "Gib eine Zahl ein, zum Beispiel 12.500 oder 12500,50."; inp.classList.remove("lp-ok", "lp-bad"); save(); return; }
+      st.versuche = (st.versuche || 0) + 1; st.ok = Math.abs(v - soll) <= Math.max(tol, 0.005);
+      inp.classList.toggle("lp-ok", st.ok); inp.classList.toggle("lp-bad", !st.ok);
+      if (st.ok) { fb.className = "lp-fb ok"; fb.textContent = "✅ Richtig."; st.sol = true; }
+      else { fb.className = "lp-fb bad"; fb.textContent = "❌ Noch nicht. Dein Wert ist " + (v > soll ? "zu hoch." : "zu niedrig.") + " Rechne noch einmal nach."; }
+      save(); merke(box, box.querySelector("h3").textContent); werk.neuMalen();
+    });
+    if (st.eingabe != null) inp.value = st.eingabe;
+    if (st.versuche) {
+      inp.classList.toggle("lp-ok", !!st.ok); inp.classList.toggle("lp-bad", !st.ok);
+      fb.className = "lp-fb " + (st.ok ? "ok" : "bad"); fb.textContent = st.ok ? "✅ Richtig." : "❌ Noch nicht. Rechne noch einmal nach.";
     }
     werk.neuMalen();
   }
@@ -492,18 +527,37 @@
     main.insertBefore(el("div", { "class": "box note lp-weiter" }, weiterLink()), main.firstChild);
   }
 
+  // ---------- Zwischenstand: x von y interaktiven Aufgaben richtig ----------
+  function zwischenstand(keys) {
+    var boxes = document.querySelectorAll(".lp-aufg"); if (boxes.length < 3) return;
+    var main = document.querySelector("main");
+    var box = el("div", { "class": "box note lp-zaehler", "aria-live": "polite" });
+    var letzte = boxes[boxes.length - 1];            // direkt hinter der letzten interaktiven Aufgabe
+    letzte.parentNode.insertBefore(box, letzte.nextSibling);
+    function malen() {
+      var ok = 0, versucht = 0;
+      keys.forEach(function (k) { var a = S.ans[k] || {}; if (a.ok) ok++; if (a.versuche) versucht++; });
+      box.innerHTML = "<strong>Dein Zwischenstand:</strong> " + ok + " von " + keys.length + " interaktiven Aufgaben richtig" +
+        (versucht > ok ? " (" + (versucht - ok) + " noch nicht richtig)" : "") + (ok === keys.length ? " 🎉" : "") + ".";
+    }
+    malen();
+    document.addEventListener("click", function (e) { if (e.target.closest && e.target.closest(".lp-pruefen")) setTimeout(malen, 0); });
+  }
+
   function start() {
     var seite = document.querySelector("main"); if (!seite) return;
     ankerUndMerken();
-    var n = 0;
+    var n = 0, keys = [];
     Array.prototype.forEach.call(document.querySelectorAll(".lp-aufg"), function (box) {
-      var key = pageKey() + ":a" + (n++);
+      var key = pageKey() + ":a" + (n++); keys.push(key);
       if (box.dataset.kind === "buchung") baueBuchung(box, key);
       else if (box.dataset.kind === "reihenfolge") baueReihenfolge(box, key);
+      else if (box.dataset.kind === "zahl") baueZahl(box, key);
       else baueAuswahl(box, key);
     });
     baueHinweise(seite);
     sperreLoesungen();
+    if (keys.length) zwischenstand(keys);
     if (!IN_PKG && K.mitStand !== false) { dateiWaehler(); standKnoepfe(); warnungOhneSpeicher(); var ib = standBox(); weitermachen(ib); pauseBox(); aktualisiere(); }
     if (location.hash && /^#aufg-\d+$/.test(location.hash)) {
       var z = document.querySelector(location.hash);
