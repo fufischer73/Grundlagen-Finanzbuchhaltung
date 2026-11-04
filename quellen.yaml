@@ -9,12 +9,12 @@
 - id: q-kontenplan
   titel: Kontenplan der Lehrkraft (BBZ), ergänzt um 0500 und 0700
   art: eigene
-  status: zu_pruefen
-  geprueft_am: 2026-11-02
-  belegt: Kontonummern 0500 Grundstücke und Gebäude und 0700 Maschinen von Claude ergänzt, mit dem Schulkontenplan abgleichen. Übrige Nummern wie von der Lehrkraft vorgegeben.
+  status: verifiziert
+  geprueft_am: 2026-11-04
+  belegt: Kontonummern 0500 Grundstücke und Gebäude und 0700 Maschinen von Claude ergänzt, von der Lehrkraft am 2026-11-04 bestätigt. Übrige Nummern wie von der Lehrkraft vorgegeben.
 - id: q-buchungsregeln
   titel: Buchungsregeln, Bilanzveränderungen, Abschlussbuchungen (Bilanzmethode)
   art: fachliteratur
-  status: zu_pruefen
-  geprueft_am: 2026-11-02
-  belegt: Fachlogik aus dem Vorgänger-Lernpfad Buchungssätze und Kontenabschluss. Alle Beispielrechnungen mit einem Rechenwerkzeug nachgerechnet (Aktiva = Passiva, Gewinn/Verlust). Lehrkraft prüft die Fachaussagen.
+  status: verifiziert
+  geprueft_am: 2026-11-04
+  belegt: Fachlogik aus dem Vorgänger-Lernpfad Buchungssätze und Kontenabschluss, alle Beispielrechnungen mit einem Rechenwerkzeug nachgerechnet. Reihenfolge der Belegbearbeitung (sieben Schritte) und Steckbrief des Modellunternehmens von der Lehrkraft am 2026-11-04 bestätigt. Freigabe aller Module durch die Lehrkraft am 2026-11-04.
