@@ -217,6 +217,58 @@
     werk.neuMalen();
   }
 
+  // ---------- :::reihenfolge – Nummern der richtigen Reihenfolge eingeben ----------
+  function baueReihenfolge(box, key) {
+    var st = S.ans[key] || (S.ans[key] = {});
+    var items = jsonAttr(box, "data-items"), liste = jsonAttr(box, "data-liste");
+    var richtig = (box.dataset.richtig || "").split(",").map(Number), n = items.length;
+    var id = key.replace(/[^\w-]/g, "-");
+    var bau = box.querySelector(".lp-bau");
+    bau.innerHTML = '<ol class="lp-reihe">' + items.map(function (x, i) {
+      return '<li><span class="lp-nr" aria-hidden="true">' + (i + 1) + '</span><span class="lp-rtext"><span class="lp-sr">Nummer ' + (i + 1) + ': </span>' + x + "</span></li>";
+    }).join("") + '</ol><label class="lp-feld lp-folge"><span>Richtige Reihenfolge: Gib die ' + n + ' Nummern ein, zum Beispiel „' +
+      (function () { var a = []; for (var i = 1; i <= Math.min(n, 4); i++) a.push(i); return a.join(", ") + (n > 4 ? ", …" : ""); })() +
+      '“</span><input id="' + id + '-f" type="text" inputmode="numeric" autocomplete="off" placeholder="' + n + ' Nummern, mit Komma oder Leerzeichen getrennt"></label>' +
+      '<div class="lp-actions"><button type="button" class="btn lp-pruefen">Prüfen</button></div><div class="lp-fb" aria-live="polite"></div>';
+    var inp = bau.querySelector("#" + id + "-f"), fb = bau.querySelector(".lp-fb");
+    var werk = werkzeuge(box, st, box.dataset.loesung || "", jsonAttr(box, "data-tipps"), {
+      loesungHtml: function () {
+        return "Reihenfolge der Nummern: <strong>" + richtig.join(", ") + "</strong><ol class=\"lp-loesliste\">" +
+          liste.map(function (x) { return "<li>" + x + "</li>"; }).join("") + "</ol>";
+      }
+    });
+    function parse(s) {
+      var teile = String(s).replace(/[;.\-→>]/g, " ").split(/[\s,]+/).filter(Boolean);
+      return teile.map(function (x) { return /^\d+$/.test(x) ? parseInt(x, 10) : NaN; });
+    }
+    inp.addEventListener("change", function () { st.eingabe = inp.value; save(); merke(box, box.querySelector("h3").textContent); });
+    bau.querySelector(".lp-pruefen").addEventListener("click", function () {
+      var z = parse(inp.value);
+      st.eingabe = inp.value;
+      if (!z.length) { fb.className = "lp-fb warn"; fb.textContent = "Trage die Nummern in der richtigen Reihenfolge ein."; save(); return; }
+      var ungueltig = z.some(function (x) { return isNaN(x) || x < 1 || x > n; });
+      var doppelt = z.some(function (x, i) { return z.indexOf(x) !== i; });
+      if (ungueltig || doppelt || z.length !== n) {
+        fb.className = "lp-fb warn";
+        fb.textContent = "Gib alle " + n + " Nummern (1 bis " + n + ") genau einmal ein. Du hast " + z.length + " eingegeben" + (doppelt ? ", eine Nummer doppelt" : "") + ".";
+        save(); return;
+      }
+      var treffer = 0, anfang = 0, ok = true;
+      z.forEach(function (x, i) { if (x === richtig[i]) treffer++; });
+      for (var i = 0; i < n && z[i] === richtig[i]; i++) anfang++;
+      st.versuche = (st.versuche || 0) + 1; st.ok = treffer === n;
+      if (st.ok) { fb.className = "lp-fb ok"; fb.textContent = "✅ Richtig. Die Reihenfolge stimmt."; st.sol = true; }
+      else {
+        fb.className = "lp-fb bad";
+        fb.textContent = "❌ " + treffer + " von " + n + " Plätzen stimmen." + (anfang ? " Die ersten " + anfang + (anfang === 1 ? " Nummer stimmt." : " Nummern stimmen.") : " Schon der erste Schritt stimmt noch nicht.");
+      }
+      save(); merke(box, box.querySelector("h3").textContent); werk.neuMalen();
+    });
+    if (st.eingabe != null) inp.value = st.eingabe;
+    if (st.versuche) { fb.className = "lp-fb " + (st.ok ? "ok" : "bad"); fb.textContent = st.ok ? "✅ Richtig. Die Reihenfolge stimmt." : "❌ Noch nicht ganz. Prüfe deine Reihenfolge erneut."; }
+    werk.neuMalen();
+  }
+
   // ---------- :::hinweis – Tipp erst auf Klick, nacheinander (je Aufgabe) ----------
   function baueHinweise(seite) {
     var hints = Array.prototype.slice.call(seite.querySelectorAll(".lp-hinweis"));
@@ -284,10 +336,32 @@
     });
   }
 
-  // ---------- Arbeitsstand: Weitermachen, sichern, laden ----------
+  // ---------- Arbeitsstand: automatisch im Browser, dazu Datei sichern/laden, Weitermachen ----------
+  var EXPKEY = "lernpfad-" + K.kurzname + "-v1:export";
+  var SPEICHER = (function () {
+    try { var k = "lp-test"; localStorage.setItem(k, "1"); localStorage.removeItem(k); return true; } catch (e) { return false; }
+  })();
+  function letzteSicherung() { try { return localStorage.getItem(EXPKEY) || ""; } catch (e) { return ""; } }
+  function datum(iso) {
+    var d = new Date(iso); if (isNaN(d)) return "";
+    return d.toLocaleDateString("de-DE") + ", " + d.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" }) + " Uhr";
+  }
+  function hatFortschritt() {
+    var n = Object.keys(S.done || {}).filter(function (k) { return S.done[k]; }).length +
+      Object.keys(S.checks || {}).filter(function (k) { return S.checks[k]; }).length +
+      Object.keys(S.notes || {}).filter(function (k) { return String(S.notes[k] || "").trim(); }).length +
+      Object.keys(S.ans || {}).filter(function (k) { var a = S.ans[k]; return a === 1 || (a && (a.versuche || a.sol || a.tipps || a.eingabe || a.wahl != null)); }).length;
+    return n > 0;
+  }
   function stand() {
     return { format: "lernpfad-stand", version: 1, kurs: K.kurzname, gespeichert: new Date().toISOString(),
       done: S.done, checks: S.checks, notes: S.notes, selfcheck: S.selfcheck, quiz: S.quiz, test: S.test, ans: S.ans, pos: S.pos || null, app: S.app };
+  }
+  function aktualisiere() {
+    var z = letzteSicherung();
+    Array.prototype.forEach.call(document.querySelectorAll(".lp-lastsave"), function (n) {
+      n.textContent = z ? "Letzte Datei-Sicherung: " + datum(z) : "Noch keine Datei gesichert.";
+    });
   }
   function sichern() {
     var d = new Date(), p = function (x) { return (x < 10 ? "0" : "") + x; };
@@ -296,53 +370,126 @@
     var a = el("a", { href: URL.createObjectURL(blob), download: name });
     document.body.appendChild(a); a.click();
     setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500);
-    meldung("Stand gesichert. Die Datei " + name + " liegt in deinem Download-Ordner. Mit „Stand laden“ machst du später genau hier weiter.");
+    try { localStorage.setItem(EXPKEY, new Date().toISOString()); } catch (e) { /* ignorieren */ }
+    aktualisiere();
+    meldung("Stand gesichert: " + name + ". Die Datei liegt jetzt in deinem Download-Ordner. Mit „Stand laden“ machst du später genau hier weiter.");
+  }
+  function uebernehmen(d) {
+    ["done", "checks", "notes", "selfcheck", "quiz", "test", "ans"].forEach(function (k) { S[k] = d[k] || {}; });
+    S.pos = d.pos || null; if (d.app) S.app = d.app;
+    try { if (d.gespeichert) localStorage.setItem(EXPKEY, d.gespeichert); } catch (e) { /* ignorieren */ }
+    save();
+    var ziel = S.pos && S.pos.file ? S.pos.file + (S.pos.id ? "#" + S.pos.id : "") : "";
+    if (ziel && ziel.split("#")[0] !== currentFile()) location.href = ziel;
+    else { if (ziel) location.hash = ziel.split("#")[1] || ""; location.reload(); }
   }
   function laden(datei) {
     var r = new FileReader();
+    r.onerror = function () { meldung("Die Datei konnte nicht gelesen werden.", true); };
     r.onload = function () {
       var d;
-      try { d = JSON.parse(r.result); } catch (e) { meldung("Die Datei konnte nicht gelesen werden.", true); return; }
+      try { d = JSON.parse(r.result); } catch (e) { meldung("Die Datei konnte nicht gelesen werden. Wähle eine Datei, die mit „Stand sichern“ erzeugt wurde.", true); return; }
       if (!d || d.format !== "lernpfad-stand" || d.kurs !== K.kurzname) { meldung("Diese Datei gehört nicht zu diesem Lernpfad.", true); return; }
-      ["done", "checks", "notes", "selfcheck", "quiz", "test", "ans"].forEach(function (k) { S[k] = d[k] || {}; });
-      S.pos = d.pos || null; if (d.app) S.app = d.app;
-      save();
-      var ziel = S.pos && S.pos.file ? S.pos.file + (S.pos.id ? "#" + S.pos.id : "") : "";
-      if (ziel && ziel.split("#")[0] !== currentFile()) location.href = ziel;
-      else { if (ziel) location.hash = ziel.split("#")[1] || ""; location.reload(); }
+      var wann = d.gespeichert ? " (gesichert am " + datum(d.gespeichert) + ")" : "";
+      if (hatFortschritt()) {
+        bestaetige("Auf diesem Gerät gibt es schon einen Arbeitsstand. Er wird durch die Datei" + wann + " ersetzt. Möchtest du fortfahren?",
+          "Ja, Datei laden", function () { uebernehmen(d); });
+      } else uebernehmen(d);
     };
     r.readAsText(datei);
   }
-  function meldung(text, fehler) {
+  function panel(text, fehler) {
     var m = document.getElementById("lp-meldung");
     if (!m) { m = el("div", { id: "lp-meldung", role: "status", "class": "lp-meldung" }); document.body.appendChild(m); }
     m.className = "lp-meldung" + (fehler ? " bad" : "");
-    m.textContent = text; m.hidden = false;
-    clearTimeout(meldung.t); meldung.t = setTimeout(function () { m.hidden = true; }, 7000);
+    m.innerHTML = ""; m.appendChild(el("div", null, esc(text))); m.hidden = false;
+    clearTimeout(meldung.t);
+    return m;
+  }
+  function meldung(text, fehler) {
+    var m = panel(text, fehler);
+    meldung.t = setTimeout(function () { m.hidden = true; }, 9000);
+  }
+  function bestaetige(text, jaText, ja) {
+    var m = panel(text, false);
+    m.className = "lp-meldung lp-confirm"; m.setAttribute("role", "alertdialog");
+    var zeile = el("div", { "class": "lp-confirm-btns" });
+    var b1 = el("button", { type: "button", "class": "btn" }, esc(jaText)), b2 = el("button", { type: "button", "class": "btn secondary" }, "Abbrechen");
+    b1.addEventListener("click", function () { m.hidden = true; ja(); });
+    b2.addEventListener("click", function () { m.hidden = true; });
+    zeile.appendChild(b1); zeile.appendChild(b2); m.appendChild(zeile); b1.focus();
+  }
+  function dateiWaehler() {
+    var inp = document.getElementById("lp-standdatei");
+    if (!inp) {
+      inp = el("input", { type: "file", accept: "application/json,.json", hidden: "hidden", id: "lp-standdatei", "aria-label": "Stand-Datei wählen" });
+      inp.addEventListener("change", function () { if (inp.files && inp.files[0]) laden(inp.files[0]); });
+      document.body.appendChild(inp);
+    }
+    return inp;
+  }
+  function ladenKlick() { var i = dateiWaehler(); i.value = ""; i.click(); }
+  function knopf(text, titel, fn, klasse) {
+    var b = el("button", { type: "button", title: titel, "class": klasse || "" }, text); b.addEventListener("click", fn); return b;
+  }
+  var statusEl = null, statusT = null;
+  function statusZeigen() {
+    if (!statusEl) return;
+    clearTimeout(statusT);
+    statusT = setTimeout(function () {
+      var d = new Date(), p = function (x) { return (x < 10 ? "0" : "") + x; };
+      statusEl.textContent = SPEICHER ? "✓ gespeichert " + p(d.getHours()) + ":" + p(d.getMinutes()) : "⚠ nicht gespeichert";
+    }, 250);
   }
   function standKnoepfe() {
     var bar = document.getElementById("topbar"); if (!bar) return;
     var wrap = el("div", { "class": "lp-stand" });
-    var b1 = el("button", { type: "button", title: "Arbeitsstand als Datei sichern (zum Weitermachen auf einem anderen Gerät)", "aria-label": "Stand sichern" }, "💾 <span>Stand sichern</span>");
-    var b2 = el("button", { type: "button", title: "Gesicherten Arbeitsstand aus einer Datei laden", "aria-label": "Stand laden" }, "📂 <span>Stand laden</span>");
-    var inp = el("input", { type: "file", accept: "application/json,.json", hidden: "hidden", id: "lp-standdatei", "aria-label": "Stand-Datei wählen" });
-    b1.addEventListener("click", sichern);
-    b2.addEventListener("click", function () { inp.value = ""; inp.click(); });
-    inp.addEventListener("change", function () { if (inp.files && inp.files[0]) laden(inp.files[0]); });
-    wrap.appendChild(b1); wrap.appendChild(b2); wrap.appendChild(inp);
+    var b1 = knopf("💾 <span>Stand sichern</span>", "Arbeitsstand als Datei sichern (zum Weitermachen auf einem anderen Gerät)", sichern);
+    var b2 = knopf("📂 <span>Stand laden</span>", "Gesicherten Arbeitsstand aus einer Datei laden", ladenKlick);
+    b1.setAttribute("aria-label", "Stand sichern"); b2.setAttribute("aria-label", "Stand laden");
+    statusEl = el("span", { "class": "lp-status", "aria-live": "polite" }, SPEICHER ? "✓ automatisch gespeichert" : "⚠ nicht gespeichert");
+    wrap.appendChild(b1); wrap.appendChild(b2); wrap.appendChild(statusEl);
     var spacer = bar.querySelector(".spacer");
     if (spacer) spacer.parentNode.insertBefore(wrap, spacer.nextSibling); else bar.appendChild(wrap);
+    ["change", "input", "click"].forEach(function (ev) { document.addEventListener(ev, statusZeigen); });
   }
-  function weitermachen() {
-    var p = S.pos; if (!p || !p.file) return;
+  function warnungOhneSpeicher() {
+    if (SPEICHER) return;
     var main = document.querySelector("main"); if (!main) return;
-    var hier = p.file === currentFile();
-    var istStart = !document.body.dataset.module;
-    if (hier && !istStart) return;   // schon auf der Seite
+    main.insertBefore(el("div", { "class": "box warn lp-nospeicher", role: "alert" },
+      "<strong>Dein Browser speichert nicht automatisch</strong> (zum Beispiel im privaten Modus). Sichere deinen Stand regelmäßig mit " +
+      "„💾 Stand sichern“. Wechselst du die Seite, gehen die Eingaben sonst verloren."), main.firstChild);
+  }
+  function weiterLink() {
+    var p = S.pos; if (!p || !p.file) return "";
     var wo = (p.seite ? p.seite : p.file) + (p.titel ? ", " + p.titel : "");
-    var box = el("div", { "class": "box note lp-weiter" },
-      "▶ <strong>Weitermachen:</strong> <a href=\"" + esc(p.file + (p.id ? "#" + p.id : "")) + "\">" + esc(wo) + "</a>");
-    main.insertBefore(box, main.firstChild);
+    return "▶ <strong>Weitermachen:</strong> <a href=\"" + esc(p.file + (p.id ? "#" + p.id : "")) + "\">" + esc(wo) + "</a>";
+  }
+  function standBox() {
+    var levels = document.querySelector(".levels"); if (!levels) return false;   // nur auf der Übersicht
+    var box = el("section", { "class": "box note lp-standbox", "aria-labelledby": "lp-standtitel" });
+    var w = weiterLink();
+    box.innerHTML = '<div class="box-title" id="lp-standtitel">💾 Dein Arbeitsstand</div>' +
+      "<ul><li>Alles, was du eingibst, wird <strong>automatisch in diesem Browser gespeichert</strong>. Du kannst zwischen den Modulen und Stufen springen und später an derselben Stelle weitermachen.</li>" +
+      "<li>Willst du auf einem <strong>anderen Gerät oder PC</strong> weitermachen? Klicke auf „Stand sichern“. Die Datei lädst du dort mit „Stand laden“.</li>" +
+      "<li>Manche Browser löschen gespeicherte Seitendaten nach längerer Pause (zum Beispiel Safari am iPad). Sichere deinen Stand deshalb vor Ferien oder einem Gerätewechsel.</li></ul>" +
+      (w ? '<p class="lp-weiter-zeile">' + w + "</p>" : "") +
+      '<div class="lp-actions"></div><p class="lp-lastsave muted"></p>';
+    var act = box.querySelector(".lp-actions");
+    act.appendChild(knopf("💾 Stand sichern", "", sichern, "btn")); act.appendChild(knopf("📂 Stand laden", "", ladenKlick, "btn secondary"));
+    levels.parentNode.insertBefore(box, levels);
+    return true;
+  }
+  function pauseBox() {
+    var main = document.querySelector("main"); if (!main || !document.body.dataset.module) return;
+    var box = el("div", { "class": "lp-pause" }, "<span>Pause oder Gerätewechsel? Sichere deinen Stand in einer Datei.</span>");
+    box.appendChild(knopf("💾 Stand sichern", "", sichern, "btn secondary")); main.appendChild(box);
+  }
+  function weitermachen(inStandBox) {
+    var p = S.pos; if (!p || !p.file || inStandBox) return;
+    var main = document.querySelector("main"); if (!main) return;
+    if (p.file === currentFile()) return;   // schon auf der Seite
+    main.insertBefore(el("div", { "class": "box note lp-weiter" }, weiterLink()), main.firstChild);
   }
 
   function start() {
@@ -351,11 +498,13 @@
     var n = 0;
     Array.prototype.forEach.call(document.querySelectorAll(".lp-aufg"), function (box) {
       var key = pageKey() + ":a" + (n++);
-      if (box.dataset.kind === "buchung") baueBuchung(box, key); else baueAuswahl(box, key);
+      if (box.dataset.kind === "buchung") baueBuchung(box, key);
+      else if (box.dataset.kind === "reihenfolge") baueReihenfolge(box, key);
+      else baueAuswahl(box, key);
     });
     baueHinweise(seite);
     sperreLoesungen();
-    if (!IN_PKG && K.mitStand !== false) { standKnoepfe(); weitermachen(); }
+    if (!IN_PKG && K.mitStand !== false) { dateiWaehler(); standKnoepfe(); warnungOhneSpeicher(); var ib = standBox(); weitermachen(ib); pauseBox(); aktualisiere(); }
     if (location.hash && /^#aufg-\d+$/.test(location.hash)) {
       var z = document.querySelector(location.hash);
       if (z) setTimeout(function () { z.scrollIntoView({ block: "start" }); }, 100);
