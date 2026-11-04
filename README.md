@@ -6,3 +6,4 @@ Lernpfad (Web-Version) für Azubis Industriekaufleute, ca. 5 Unterrichtsstunden,
 - Als Webseite über GitHub Pages: Settings › Pages › Deploy from a branch › Branch `main`, Ordner `/docs`.
 - Quellen: `kurs.yaml`, `module/`, `seiten/`, `material/kontenplan.md`, `quellen.yaml`.
 - Der Ordner `docs/` wird aus den Quellen erzeugt (Lernpfad-Baukasten), nicht von Hand ändern.
+- Stand: Alle Module sind freigegeben (04.11.2026).
