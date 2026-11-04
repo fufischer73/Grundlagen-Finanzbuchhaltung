@@ -9,6 +9,7 @@
 <script src="assets/js/kurs.js"></script>
 <script src="assets/js/medien.js" defer></script>
 <script src="assets/js/app.js" defer></script>
+<script src="assets/js/interaktiv.js" defer></script>
 </head>
 <body data-module="b2">
 <header id="topbar"></header>
@@ -114,82 +115,17 @@
 </tbody>
 </table></div>
 <h2>3. Üben</h2>
-<div class="box task basis"><div class="task-head"><span class="lvl basis">Basis</span><h3>1 · Drei Belege buchen</h3><span class="lvl time">10 min</span></div><p>Bearbeite die drei Belege der Holzwerk Förde GmbH. Gehe nach dem Fünf-Schritte-Schema vor.
-Nenne Konten, Bilanzveränderung und Buchungssatz.</p>
-<div class="table-wrap"><table>
-<thead>
-<tr>
-<th>Beleg</th>
-<th>Inhalt</th>
-<th>Betrag</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A</td>
-<td>Kontoauszug: Gutschrift eines Kunden für eine Ausgangsrechnung</td>
-<td>3.200 €</td>
-</tr>
-<tr>
-<td>B</td>
-<td>Kontoauszug: Lastschrift der Tilgungsrate für das Darlehen</td>
-<td>2.500 €</td>
-</tr>
-<tr>
-<td>C</td>
-<td>Eingangsrechnung: Kleintransporter auf Ziel</td>
-<td>18.000 €</td>
-</tr>
-</tbody>
-</table></div>
-<div class="checkliste"><div class="check-title">Selbstcheck</div><ul class="check">
-<li>Ich habe zu jedem Beleg zwei Konten genannt.</li>
-<li>Ich habe die Kontoart und Mehrung oder Minderung bestimmt.</li>
-<li>Ich habe die Bilanzveränderung angegeben.</li>
-<li>Mein Buchungssatz lautet Soll an Haben, mit Kontonummern.</li>
-</ul>
-</div><details><summary>Lösung</summary><p>A: 2800 Bank an 2400 Forderungen 3.200,00 € (Aktivtausch).</p>
-<p>B: 4250 Darlehen an 2800 Bank 2.500,00 € (Aktiv-Passiv-Minderung).</p>
-<p>C: 0840 Fuhrpark an 4400 Verbindlichkeiten 18.000,00 € (Aktiv-Passiv-Mehrung).</p>
-</details></div><div class="box task basis"><div class="task-head"><span class="lvl basis">Basis</span><h3>2 · Sicher zuordnen</h3><span class="lvl time">5 min</span></div><p>Gib für jeden Fall an: Soll oder Haben?</p>
-<ol>
-<li>Die Kasse nimmt zu.</li>
-<li>Die Verbindlichkeiten nehmen ab.</li>
-<li>Das Darlehen nimmt zu.</li>
-<li>Die Forderungen nehmen ab.</li>
-</ol>
-<details><summary>Lösung</summary><p>1 Soll, 2 Soll, 3 Haben, 4 Haben.</p>
-</details></div><div class="box task plus"><div class="task-head"><span class="lvl plus">Plus</span><h3>3 · Schwierigere Belege</h3><span class="lvl time">10 min</span></div><p>Buche die Belege der Holzwerk Förde GmbH. Nenne auch die Bilanzveränderung.</p>
-<div class="table-wrap"><table>
-<thead>
-<tr>
-<th>Beleg</th>
-<th>Inhalt</th>
-<th>Betrag</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>D</td>
-<td>Quittung: Barkauf eines gebrauchten Büroschranks</td>
-<td>450 €</td>
-</tr>
-<tr>
-<td>E</td>
-<td>Darlehensvertrag: Eine offene Rechnung eines Lieferers wird in ein Darlehen umgewandelt</td>
-<td>10.000 €</td>
-</tr>
-<tr>
-<td>F</td>
-<td>Kontoauszug: Banküberweisung an einen Lieferer</td>
-<td>6.000 €</td>
-</tr>
-</tbody>
-</table></div>
-<details><summary>Lösung</summary><p>D: 0850 BGA an 2880 Kasse 450,00 € (Aktivtausch).</p>
-<p>E: 4400 Verbindlichkeiten an 4250 Darlehen 10.000,00 € (Passivtausch).</p>
-<p>F: 4400 Verbindlichkeiten an 2800 Bank 6.000,00 € (Aktiv-Passiv-Minderung).</p>
-</details></div><div class="box warn"><div class="box-title">Typischer Fehler</div><p>Soll und Haben vertauschen. Frage dich: Ist es ein Aktiv- oder ein Passivkonto? Nimmt es zu oder ab?
+<div class="box task basis lp-aufg" data-kind="buchung" data-tipps="[&quot;Welche zwei Konten ändern sich? Das Geld kommt auf die Bank, die Forderung ist erledigt.&quot;, &quot;Beide sind Aktivkonten. Die Bank nimmt zu, die Forderungen nehmen ab.&quot;]" data-loesung="Die Bank nimmt zu (Soll), die Forderungen nehmen ab (Haben). Ein Aktivkonto steigt, ein anderes sinkt: Aktivtausch." data-soll="2800" data-haben="2400" data-betrag="3200" data-typ="AT" data-konten="2000, 2400, 2800, 2880, 4250, 4400"><div class="task-head"><span class="lvl basis">Buchung</span><h3>Beleg A: Kunde zahlt</h3><span class="lvl time">3 min</span></div><div class="lp-frage">Kontoauszug: Ein Kunde überweist 3.200 € für eine Ausgangsrechnung.</div><div class="lp-bau"></div></div>
+<div class="box task basis lp-aufg" data-kind="buchung" data-tipps="[&quot;Das Darlehen ist eine Schuld (Passivkonto). Die Bank ist ein Aktivkonto. Beide nehmen ab.&quot;, &quot;Ein Passivkonto nimmt im Soll ab. Ein Aktivkonto nimmt im Haben ab.&quot;]" data-loesung="Das Darlehen sinkt (Soll), die Bank sinkt (Haben). Aktiva und Passiva werden kleiner: Aktiv-Passiv-Minderung." data-soll="4250" data-haben="2800" data-betrag="2500" data-typ="APD" data-konten="2000, 2400, 2800, 2880, 4250, 4400"><div class="task-head"><span class="lvl basis">Buchung</span><h3>Beleg B: Tilgungsrate</h3><span class="lvl time">3 min</span></div><div class="lp-frage">Kontoauszug: Die Bank belastet die Tilgungsrate für das Darlehen mit 2.500 €.</div><div class="lp-bau"></div></div>
+<div class="box task basis lp-aufg" data-kind="buchung" data-tipps="[&quot;Ein Transporter gehört zum Fuhrpark. Auf Ziel heißt: Du schuldest dem Lieferer das Geld.&quot;, &quot;Fuhrpark nimmt zu (Aktivkonto), Verbindlichkeiten nehmen zu (Passivkonto).&quot;]" data-loesung="Der Fuhrpark nimmt zu (Soll), die Verbindlichkeiten nehmen zu (Haben). Beide Seiten wachsen: Aktiv-Passiv-Mehrung." data-soll="0840" data-haben="4400" data-betrag="18000" data-typ="APM" data-konten="0840, 0850, 2800, 4250, 4400"><div class="task-head"><span class="lvl basis">Buchung</span><h3>Beleg C: Transporter</h3><span class="lvl time">3 min</span></div><div class="lp-frage">Eingangsrechnung: Kauf eines Kleintransporters über 18.000 € auf Ziel.</div><div class="lp-bau"></div></div>
+<div class="box task basis lp-aufg" data-kind="auswahl" data-tipps="[&quot;Aktivkonten: Mehrung links.&quot;]" data-loesung="Aktivkonten nehmen im Soll zu." data-optionen="[&quot;Soll&quot;, &quot;Haben&quot;]" data-richtig="1"><div class="task-head"><span class="lvl basis">Auswahl</span><h3>Soll oder Haben 1</h3><span class="lvl time">1 min</span></div><div class="lp-frage">Die Kasse (Aktivkonto) nimmt zu. Auf welcher Seite buchst du?</div><div class="lp-bau"></div></div>
+<div class="box task basis lp-aufg" data-kind="auswahl" data-tipps="[&quot;Passivkonten verhalten sich umgekehrt zu Aktivkonten.&quot;]" data-loesung="Passivkonten nehmen im Soll ab und im Haben zu." data-optionen="[&quot;Soll&quot;, &quot;Haben&quot;]" data-richtig="1"><div class="task-head"><span class="lvl basis">Auswahl</span><h3>Soll oder Haben 2</h3><span class="lvl time">1 min</span></div><div class="lp-frage">Die Verbindlichkeiten (Passivkonto) nehmen ab. Auf welcher Seite buchst du?</div><div class="lp-bau"></div></div>
+<div class="box task basis lp-aufg" data-kind="auswahl" data-tipps="[&quot;Passivkonto: Mehrung rechts.&quot;]" data-loesung="Passivkonten nehmen im Haben zu." data-optionen="[&quot;Soll&quot;, &quot;Haben&quot;]" data-richtig="2"><div class="task-head"><span class="lvl basis">Auswahl</span><h3>Soll oder Haben 3</h3><span class="lvl time">1 min</span></div><div class="lp-frage">Das Darlehen (Passivkonto) nimmt zu. Auf welcher Seite buchst du?</div><div class="lp-bau"></div></div>
+<div class="box task basis lp-aufg" data-kind="auswahl" data-tipps="[&quot;Aktivkonten: Minderung rechts.&quot;]" data-loesung="Aktivkonten nehmen im Haben ab." data-optionen="[&quot;Soll&quot;, &quot;Haben&quot;]" data-richtig="2"><div class="task-head"><span class="lvl basis">Auswahl</span><h3>Soll oder Haben 4</h3><span class="lvl time">1 min</span></div><div class="lp-frage">Die Forderungen (Aktivkonto) nehmen ab. Auf welcher Seite buchst du?</div><div class="lp-bau"></div></div>
+<div class="box task plus lp-aufg" data-kind="buchung" data-tipps="[&quot;Ein Büroschrank gehört zur Betriebs- und Geschäftsausstattung (BGA).&quot;, &quot;Die Kasse nimmt ab, die BGA nimmt zu. Beides sind Aktivkonten.&quot;]" data-loesung="BGA nimmt zu (Soll), Kasse nimmt ab (Haben): Aktivtausch." data-soll="0850" data-haben="2880" data-betrag="450" data-typ="AT" data-konten="0840, 0850, 2800, 2880, 4400"><div class="task-head"><span class="lvl plus">Buchung</span><h3>Beleg D: Büroschrank</h3><span class="lvl time">3 min</span></div><div class="lp-frage">Quittung: Barkauf eines gebrauchten Büroschranks für 450 €.</div><div class="lp-bau"></div></div>
+<div class="box task plus lp-aufg" data-kind="buchung" data-tipps="[&quot;Hier ändern sich zwei Schulden. Kommt neues Geld auf die Bank?&quot;, &quot;Beide Konten sind Passivkonten: Die Verbindlichkeit nimmt ab, das Darlehen nimmt zu.&quot;]" data-loesung="Verbindlichkeiten nehmen ab (Soll), das Darlehen nimmt zu (Haben). Beide stehen rechts: Passivtausch." data-soll="4400" data-haben="4250" data-betrag="10000" data-typ="PT" data-konten="2800, 4250, 4400, 2400"><div class="task-head"><span class="lvl plus">Buchung</span><h3>Beleg E: Umschuldung</h3><span class="lvl time">3 min</span></div><div class="lp-frage">Darlehensvertrag: Eine offene Rechnung eines Lieferers (10.000 €) wird in ein Darlehen umgewandelt.</div><div class="lp-bau"></div></div>
+<div class="box task plus lp-aufg" data-kind="buchung" data-tipps="[&quot;Welche Schuld wird kleiner? Und welches Konto verliert Geld?&quot;, &quot;Verbindlichkeiten sinken (Passivkonto: Soll), Bank sinkt (Aktivkonto: Haben).&quot;]" data-loesung="Verbindlichkeiten nehmen ab (Soll), Bank nimmt ab (Haben): Aktiv-Passiv-Minderung." data-soll="4400" data-haben="2800" data-betrag="6000" data-typ="APD" data-konten="2400, 2800, 2880, 4250, 4400"><div class="task-head"><span class="lvl plus">Buchung</span><h3>Beleg F: Lieferer bezahlt</h3><span class="lvl time">3 min</span></div><div class="lp-frage">Kontoauszug: Banküberweisung an einen Lieferer über 6.000 €.</div><div class="lp-bau"></div></div>
+<div class="box warn"><div class="box-title">Typischer Fehler</div><p>Soll und Haben vertauschen. Frage dich: Ist es ein Aktiv- oder ein Passivkonto? Nimmt es zu oder ab?
 Dann folgt die Seite aus der Regel.</p>
 </div><div class="box quiz"><div class="box-title">🧠 Kurz-Check</div><div class="qa" data-right="1"><p class="q">Ein Kunde überweist eine offene Rechnung auf unser Bankkonto. Welche Bilanzveränderung liegt vor?</p><ol><li>Aktivtausch</li><li>Aktiv-Passiv-Mehrung</li><li>Passivtausch</li></ol><p class="fb" data-ok="Richtig. Bank steigt, Forderungen sinken. Beides sind Aktivkonten." data-no="Forderungen und Bank stehen beide auf der Aktivseite. Ein Posten steigt, der andere sinkt. Das ist ein Aktivtausch."></p></div><div class="qa" data-right="2"><p class="q">Rohstoffe werden auf Ziel gekauft. Wie lautet der Buchungssatz?</p><ol><li>2400 Forderungen an 2000 Rohstoffe</li><li>2000 Rohstoffe an 4400 Verbindlichkeiten</li><li>4400 Verbindlichkeiten an 2000 Rohstoffe</li></ol><p class="fb" data-ok="Genau. Rohstoffe (Aktivkonto) nehmen im Soll zu. Die Verbindlichkeit (Passivkonto) nimmt im Haben zu." data-no="Rohstoffe nehmen zu, also Soll. Die Schuld beim Lieferer steigt, also Verbindlichkeiten im Haben."></p></div><div class="qa" data-right="3"><p class="q">Auf welcher Seite buchst du die Minderung eines Passivkontos?</p><ol><li>Haben</li><li>Auf keiner, das geht nicht</li><li>Soll</li></ol><p class="fb" data-ok="Richtig. Passivkonten nehmen im Haben zu und im Soll ab." data-no="Bei Passivkonten ist es umgekehrt wie bei Aktivkonten. Mehrung im Haben, Minderung im Soll."></p></div></div>
 </main>

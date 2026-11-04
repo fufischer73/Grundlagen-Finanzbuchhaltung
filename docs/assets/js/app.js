@@ -60,7 +60,7 @@
   // nur die Programmwahl im localStorage (gilt so für alle Module des Kurses).
   var KEY = "lernpfad-" + K.kurzname + "-v1";
   var APPKEY = KEY + ":app";
-  var state = { done: {}, checks: {}, notes: {}, selfcheck: {}, quiz: {}, test: {}, app: VAR_IDS[0] || "" };
+  var state = { done: {}, checks: {}, notes: {}, selfcheck: {}, quiz: {}, test: {}, ans: {}, pos: null, app: VAR_IDS[0] || "" };
   function applyStored(parsed) {
     if (!parsed) return;
     state.done = parsed.done || {};
@@ -69,6 +69,8 @@
     state.selfcheck = parsed.selfcheck || {};
     state.quiz = parsed.quiz || {};
     state.test = parsed.test || {};
+    state.ans = parsed.ans || {};
+    state.pos = parsed.pos || null;
     if (parsed.app) state.app = parsed.app;
   }
   try {
