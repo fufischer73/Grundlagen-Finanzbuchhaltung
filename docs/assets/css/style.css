@@ -501,3 +501,21 @@ details[hidden] { display: none; }
 @media print { .lp-tools, .lp-actions, .lp-stand { display: none; } }
 
 [hidden] { display: none !important; }
+
+/* Reihenfolge, Arbeitsstand */
+.lp-reihe { list-style: none; padding: 0; margin: .4rem 0 .8rem; display: flex; flex-direction: column; gap: .4rem; }
+.lp-reihe li { display: flex; gap: .7rem; align-items: flex-start; padding: .45rem .7rem; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); }
+.lp-nr { flex: none; width: 1.8rem; height: 1.8rem; border-radius: 50%; background: var(--deep); color: #fff; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+.lp-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.lp-folge input { max-width: 100%; }
+.lp-loesliste { margin: .4rem 0 0; padding-left: 1.4rem; }
+.lp-status { font-size: .8rem; color: var(--muted); align-self: center; white-space: nowrap; }
+.lp-standbox ul { margin: .3rem 0 .6rem; padding-left: 1.2rem; display: flex; flex-direction: column; gap: .3rem; }
+.lp-weiter-zeile { margin: .4rem 0; }
+.lp-lastsave { margin: .6rem 0 0; font-size: .9rem; }
+.lp-pause { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; justify-content: space-between; margin: 1.5rem 0 .5rem; padding: .7rem .9rem; border: 1px dashed var(--border); border-radius: 10px; color: var(--muted); }
+.lp-confirm .lp-confirm-btns { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .6rem; }
+.lp-meldung.lp-confirm { background: var(--deep); }
+@media (max-width: 760px) { .lp-status { display: none; } }
+.lp-confirm .btn.secondary { color: #fff; border-color: #fff; }
+.lp-lastsave { color: var(--muted); }
