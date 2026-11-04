@@ -3,7 +3,7 @@ titel: "Meilenstein: Geschäftsgang mit Anfangsbeständen"
 minuten: 40
 meilenstein: true
 abgabe: false
-review: entwurf
+review: freigegeben
 ---
 ## Auftrag
 

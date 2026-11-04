@@ -3,7 +3,7 @@ titel: "Meilenstein: Gesamtgang mit Abschluss"
 minuten: 55
 meilenstein: true
 abgabe: false
-review: entwurf
+review: freigegeben
 ---
 ## Auftrag
 
