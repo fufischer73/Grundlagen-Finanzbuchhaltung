@@ -2,24 +2,14 @@
 titel: "Meilenstein: Geschäftsgang mit Anfangsbeständen"
 minuten: 40
 meilenstein: true
+abgabe: false
 review: entwurf
-abgabe:
-  titel: Meilenstein 1 abgeben
-  text: Lade deine T-Konten, Eröffnungs- und Abschlussbuchungen als PDF oder Foto hoch (zum Beispiel aus einer OnlyOffice-Tabelle oder vom Blatt). Schreibe deinen Zwischenstand aus dem Kasten am Ende der Seite dazu.
-  dateitypen: .pdf,.jpg,.png
-  dateien: 2
-raster:
-  - {kriterium: Eröffnung und Eigenkapital, erreicht: "alle Anfangsbestände richtig, Eigenkapital 189.000 € berechnet", besonders_gut: "Eröffnungsbuchungen sind vollständig und fehlerfrei begründet"}
-  - {kriterium: Buchungssätze und Bilanzveränderung, erreicht: "mindestens 7 von 9 Buchungssätzen richtig (Zwischenstand der Seite), Bilanzveränderung zu jedem Fall genannt", besonders_gut: "alle 9 Buchungssätze richtig mit Kontonummern"}
-  - {kriterium: T-Konten und Salden, erreicht: "alle Buchungen in den T-Konten, Salden richtig", besonders_gut: "übersichtlich, mit Gegenkonto und Buchungsnummer"}
-  - {kriterium: Abschluss und Kontrolle, erreicht: "Abschluss über SBK und Aktiva = Passiva geprüft", besonders_gut: "Schlussbilanz mit Summen und Bilanzsumme richtig"}
-quellen: [q-ls-aufgabenmuster, q-kontenplan, q-buchungsregeln]
 ---
 ## Auftrag
 
-Du arbeitest in der Buchhaltung des Modellunternehmens **Holzwerk Förde GmbH** (siehe Übersicht). Du bearbeitest die Belege eines Monats.
-Dieser Meilenstein hat zwei Teile: Du beantwortest **interaktive Aufgaben** auf dieser Seite und gibst **deine T-Konten und
-Buchungen** in Moodle ab. Eine Lösung zeigt die Seite hier nicht an. Tipps gibt es.
+Du arbeitest in der Buchhaltung des Modellunternehmens **Holzwerk Förde GmbH** (siehe Übersicht) und bearbeitest die Belege eines Monats.
+Dieser Meilenstein ist eine **Übung zur Vorbereitung auf die Klassenarbeit**. Es gibt keine Abgabe. Die Seite prüft deine Antworten.
+Tipps und Lösung zeigt sie erst, wenn du es selbst versucht hast.
 
 **Anfangsbestände:**
 
@@ -37,12 +27,12 @@ Buchungen** in Moodle ab. Eine Lösung zeigt die Seite hier nicht an. Tipps gibt
 ## Teil 1: Eigenkapital berechnen
 
 :::zahl Eigenkapital zu Beginn
-frage: Berechne das Eigenkapital (Vermögen minus Schulden) aus den Anfangsbeständen.
+frage: Berechne das Eigenkapital aus den Anfangsbeständen.
 antwort: 189000
 einheit: €
-keineloesung: ja
 min: 3
 tipp: Addiere alle Aktiva. Ziehe Darlehen und Verbindlichkeiten ab.
+loesung: Vermögen: 150.000 + 80.000 + 25.000 + 18.000 + 12.000 + 14.000 + 28.000 + 2.000 = 329.000 €. Schulden: 120.000 + 20.000 = 140.000 €. Eigenkapital: 329.000 € − 140.000 € = 189.000 €.
 :::
 
 ## Teil 2: Buchungssätze zu den Belegen
@@ -56,9 +46,9 @@ haben: 2400
 betrag: 9000
 typ: AT
 konten: 0500, 0700, 0840, 0850, 2000, 2400, 2800, 2880, 3000, 4250, 4400, EBK, SBK
-keineloesung: ja
 min: 3
 tipp: Der Kunde zahlt: Welches Konto verliert die Forderung, welches nimmt zu?
+loesung: Bank (Aktivkonto) nimmt zu: Soll. Forderungen (Aktivkonto) nimmt ab: Haben. Aktivtausch: Ein Aktivkonto nimmt zu, ein anderes ab. Die Bilanzsumme bleibt gleich.
 :::
 :::buchung Beleg 2: Eingangsrechnung
 fall: Kauf von Rohstoffen auf Ziel.
@@ -67,9 +57,9 @@ haben: 4400
 betrag: 8000
 typ: APM
 konten: 0500, 0700, 0840, 0850, 2000, 2400, 2800, 2880, 3000, 4250, 4400, EBK, SBK
-keineloesung: ja
 min: 3
 tipp: Rohstoffe nehmen zu. Auf Ziel heißt: Die Zahlung kommt später.
+loesung: Rohstoffe (Aktivkonto) nimmt zu: Soll. Verbindlichkeiten (Passivkonto) nimmt zu: Haben. Aktiv-Passiv-Mehrung: Aktiv- und Passivseite wachsen. Die Bilanzsumme steigt.
 :::
 :::buchung Beleg 3: Kontoauszug
 fall: Tilgungsrate für das Darlehen (Lastschrift).
@@ -78,9 +68,9 @@ haben: 2800
 betrag: 6000
 typ: APD
 konten: 0500, 0700, 0840, 0850, 2000, 2400, 2800, 2880, 3000, 4250, 4400, EBK, SBK
-keineloesung: ja
 min: 3
 tipp: Eine Schuld wird kleiner, und die Bank verliert Geld.
+loesung: Darlehen (Passivkonto) nimmt ab: Soll. Bank (Aktivkonto) nimmt ab: Haben. Aktiv-Passiv-Minderung: Aktiv- und Passivseite sinken. Die Bilanzsumme sinkt.
 :::
 :::buchung Beleg 4: Eingangsrechnung
 fall: Kauf eines Büroschranks auf Ziel.
@@ -89,9 +79,9 @@ haben: 4400
 betrag: 2400
 typ: APM
 konten: 0500, 0700, 0840, 0850, 2000, 2400, 2800, 2880, 3000, 4250, 4400, EBK, SBK
-keineloesung: ja
 min: 3
 tipp: Ein Büroschrank gehört zur BGA. Er wird nicht sofort bezahlt.
+loesung: BGA (Aktivkonto) nimmt zu: Soll. Verbindlichkeiten (Passivkonto) nimmt zu: Haben. Aktiv-Passiv-Mehrung: Aktiv- und Passivseite wachsen. Die Bilanzsumme steigt.
 :::
 :::buchung Beleg 5: Kontoauszug
 fall: Überweisung an einen Lieferanten.
@@ -100,9 +90,9 @@ haben: 2800
 betrag: 10000
 typ: APD
 konten: 0500, 0700, 0840, 0850, 2000, 2400, 2800, 2880, 3000, 4250, 4400, EBK, SBK
-keineloesung: ja
 min: 3
 tipp: Welche Schuld wird getilgt? Wer verliert das Geld?
+loesung: Verbindlichkeiten (Passivkonto) nimmt ab: Soll. Bank (Aktivkonto) nimmt ab: Haben. Aktiv-Passiv-Minderung: Aktiv- und Passivseite sinken. Die Bilanzsumme sinkt.
 :::
 :::buchung Beleg 6: Quittung
 fall: Barabhebung vom Bankkonto.
@@ -111,9 +101,9 @@ haben: 2800
 betrag: 1500
 typ: AT
 konten: 0500, 0700, 0840, 0850, 2000, 2400, 2800, 2880, 3000, 4250, 4400, EBK, SBK
-keineloesung: ja
 min: 3
 tipp: Das Geld geht vom Bankkonto in die Kasse.
+loesung: Kasse (Aktivkonto) nimmt zu: Soll. Bank (Aktivkonto) nimmt ab: Haben. Aktivtausch: Ein Aktivkonto nimmt zu, ein anderes ab. Die Bilanzsumme bleibt gleich.
 :::
 :::buchung Beleg 7: Ausgangsrechnung
 fall: Verkauf einer gebrauchten Maschine auf Ziel (zum Buchwert).
@@ -122,9 +112,9 @@ haben: 0700
 betrag: 7000
 typ: AT
 konten: 0500, 0700, 0840, 0850, 2000, 2400, 2800, 2880, 3000, 4250, 4400, EBK, SBK
-keineloesung: ja
 min: 3
 tipp: Die Maschine verschwindet aus dem Vermögen, dafür gibt es eine Forderung.
+loesung: Forderungen (Aktivkonto) nimmt zu: Soll. Maschinen (Aktivkonto) nimmt ab: Haben. Aktivtausch: Ein Aktivkonto nimmt zu, ein anderes ab. Die Bilanzsumme bleibt gleich.
 :::
 :::buchung Beleg 8: Kontoauszug
 fall: Darlehensauszahlung der Bank (Gutschrift).
@@ -133,9 +123,9 @@ haben: 4250
 betrag: 20000
 typ: APM
 konten: 0500, 0700, 0840, 0850, 2000, 2400, 2800, 2880, 3000, 4250, 4400, EBK, SBK
-keineloesung: ja
 min: 3
 tipp: Die Bank zahlt Geld aus. Wie heißt die neue Schuld?
+loesung: Bank (Aktivkonto) nimmt zu: Soll. Darlehen (Passivkonto) nimmt zu: Haben. Aktiv-Passiv-Mehrung: Aktiv- und Passivseite wachsen. Die Bilanzsumme steigt.
 :::
 :::buchung Beleg 9: Eingangsrechnung
 fall: Kauf eines Transporters auf Ziel.
@@ -144,14 +134,18 @@ haben: 4400
 betrag: 15000
 typ: APM
 konten: 0500, 0700, 0840, 0850, 2000, 2400, 2800, 2880, 3000, 4250, 4400, EBK, SBK
-keineloesung: ja
 min: 3
 tipp: Der Transporter gehört zum Fuhrpark und wird auf Ziel gekauft.
+loesung: Fuhrpark (Aktivkonto) nimmt zu: Soll. Verbindlichkeiten (Passivkonto) nimmt zu: Haben. Aktiv-Passiv-Mehrung: Aktiv- und Passivseite wachsen. Die Bilanzsumme steigt.
 :::
 
 ## Teil 3: Buchen und abschließen (schriftlich)
 
-Führe jetzt die **T-Konten**. Gehe so vor:
+Führe jetzt die **T-Konten** wie in der Klassenarbeit. Die Vorlage hilft dir dabei.
+
+:::material material/t-konten-meilenstein-1.pdf T-Konten-Vorlage (PDF) herunterladen
+Fertige T-Konten mit den Konten dieser Aufgabe und eine Seite Grundbuch. Drucke sie aus oder fülle sie am Tablet aus.
+:::
 
 :::schritte
 1. Eröffne alle Konten über das EBK (Anfangsbestände, Eigenkapital).
@@ -159,60 +153,55 @@ Führe jetzt die **T-Konten**. Gehe so vor:
 3. Berechne die Salden und schließe alle Konten über das SBK ab.
 :::
 
-Prüfe danach deine Ergebnisse in Teil 4.
-
 ## Teil 4: Ergebnisse kontrollieren
+
+Vergleiche deine T-Konten mit den Ergebnissen.
 
 :::zahl Saldo Bank
 frage: Wie hoch ist der Endbestand auf dem Konto 2800 Bank nach allen Buchungen?
 antwort: 39500
 einheit: €
-keineloesung: ja
 min: 2
 tipp: Soll: Anfangsbestand plus Eingänge. Haben: alle Ausgänge. Dann die Differenz.
+loesung: Soll: 28.000 + 9.000 + 20.000 = 57.000 €. Haben: 6.000 + 10.000 + 1.500 = 17.500 €. Saldo: 57.000 € − 17.500 € = 39.500 €.
 :::
 :::zahl Saldo Verbindlichkeiten
 frage: Wie hoch ist der Endbestand der Verbindlichkeiten (4400)?
 antwort: 35400
 einheit: €
-keineloesung: ja
 min: 2
 tipp: Haben: Anfangsbestand plus neue Rechnungen. Soll: bezahlte Rechnungen.
+loesung: Soll: 10.000 = 10.000 €. Haben: 20.000 + 8.000 + 2.400 + 15.000 = 45.400 €. Saldo: 45.400 € − 10.000 € = 35.400 €.
 :::
 :::zahl Saldo Darlehen
 frage: Wie hoch ist der Endbestand des Darlehens (4250)?
 antwort: 134000
 einheit: €
-keineloesung: ja
 min: 2
 tipp: Tilgung mindert, Auszahlung erhöht das Darlehen.
+loesung: Soll: 6.000 = 6.000 €. Haben: 120.000 + 20.000 = 140.000 €. Saldo: 140.000 € − 6.000 € = 134.000 €.
 :::
 :::zahl Saldo Forderungen
 frage: Wie hoch ist der Endbestand der Forderungen (2400)?
 antwort: 12000
 einheit: €
-keineloesung: ja
 min: 2
 tipp: Zahlungen von Kunden mindern, Verkäufe auf Ziel erhöhen.
+loesung: Soll: 14.000 + 7.000 = 21.000 €. Haben: 9.000 = 9.000 €. Saldo: 21.000 € − 9.000 € = 12.000 €.
 :::
 :::zahl Bilanzsumme
 frage: Wie hoch ist die Bilanzsumme im SBK (Summe der Aktiva)?
 antwort: 358400
 einheit: €
-keineloesung: ja
 min: 3
 tipp: Addiere alle Endbestände der Aktivkonten. Sie muss gleich der Summe der Passiva sein.
+loesung: Aktiva: 150.000 + 73.000 + 40.000 + 20.400 + 20.000 + 12.000 + 39.500 + 3.500 = 358.400 € Passiva: 189.000 + 134.000 + 35.400 = 358.400 €. Beide Seiten sind gleich.
 :::
 
-:::checkliste Checkliste vor der Abgabe
+:::checkliste Checkliste
 - Eigenkapital berechnet und eröffnet.
 - Alle 9 Buchungssätze mit Kontonummern und Bilanzveränderung geprüft.
 - Alle T-Konten geführt, die Gegenkonten stehen dabei.
 - Abschlussbuchungen vollständig.
 - Aktiva und Passiva im SBK sind gleich.
-- Zwischenstand der Seite auf die Abgabe geschrieben.
-:::
-
-:::tipp
-Arbeite so, wie du es in B3 geübt hast. Den Kontenplan findest du unter Extras.
 :::
